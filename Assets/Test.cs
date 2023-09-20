@@ -6,8 +6,7 @@ public class Test : MonoBehaviour
 {
     void Start()
     {
-        SortTest(new MyQuickSort()); // MyQuickSort MyMergeSort MyRadixSort
-        //SortTest(new MyMergeSort(), SortOrderType.Descending);
+        SortTest(new MyRadixSort());
     }
 
     #region 자료구조 테스트
@@ -93,60 +92,65 @@ public class Test : MonoBehaviour
 
     void PriorityQueue()
     {
-        MyPriorityQueue<string> ascendingPriorityQueue = new(5, SortOrderType.Ascending);
-        ascendingPriorityQueue.Enqueue("첫째", 1);
-        ascendingPriorityQueue.Enqueue("넷째", 4);
-        ascendingPriorityQueue.Enqueue("둘째", 2);
-        ascendingPriorityQueue.Enqueue("셋째", 3);
-        ascendingPriorityQueue.Enqueue("다섯째", 5);
+        print("================= 우선순위 - 오름차순 =================");
 
-        ascendingPriorityQueue.TestDequeue();
-        ascendingPriorityQueue.TestDequeue();
-        ascendingPriorityQueue.TestDequeue();
-        ascendingPriorityQueue.TestDequeue();
-        ascendingPriorityQueue.TestDequeue();
+        MyPriorityQueue<string> ascending = new(5, SortOrderType.Ascending);
+        ascending.Enqueue("첫째", 1); 
+        ascending.Enqueue("넷째", 4);
+        ascending.Enqueue("둘째", 2);
+        ascending.Enqueue("셋째", 3);
+        ascending.Enqueue("다섯째", 5);
 
-        print("==============================================");
+        ascending.TestDequeue();
+        ascending.TestDequeue();
+        ascending.TestDequeue();
+        ascending.TestDequeue();
+        ascending.TestDequeue();
 
-        MyPriorityQueue<string> descendingPriorityQueue = new(5, SortOrderType.Descending);
-        descendingPriorityQueue.Enqueue("첫째", 1);
-        descendingPriorityQueue.Enqueue("넷째", 4);
-        descendingPriorityQueue.Enqueue("둘째", 2);
-        descendingPriorityQueue.Enqueue("셋째", 3);
-        descendingPriorityQueue.Enqueue("다섯째", 5);
+        print("================= 우선순위 - 내림차순 =================");
 
-        descendingPriorityQueue.Peek(); print("Peek");
-        descendingPriorityQueue.Peek(); print("Peek");
+        MyPriorityQueue<string> descending = new(5, SortOrderType.Descending);
+        descending.Enqueue("첫째", 1);
+        descending.Enqueue("넷째", 4);
+        descending.Enqueue("둘째", 2);
+        descending.Enqueue("셋째", 3);
+        descending.Enqueue("다섯째", 5);
 
-        descendingPriorityQueue.TestDequeue();
-        descendingPriorityQueue.TestDequeue();
-        descendingPriorityQueue.TestDequeue();
-        descendingPriorityQueue.TestDequeue();
-        descendingPriorityQueue.TestDequeue();
-        descendingPriorityQueue.TestDequeue();
+        descending.Peek(); print("Peek");
+        descending.Peek(); print("Peek");
 
-        print("==============================================");
+        descending.TestDequeue();
+        descending.TestDequeue();
+        descending.TestDequeue();
+        descending.TestDequeue();
+        descending.TestDequeue();
+        descending.TestDequeue();
 
-        descendingPriorityQueue.Enqueue("첫째", 1);
-        descendingPriorityQueue.Enqueue("넷째", 4);
-        descendingPriorityQueue.Enqueue("둘째", 2);
-        descendingPriorityQueue.Enqueue("셋째", 3);
-        descendingPriorityQueue.Enqueue("다섯째", 5);
+        print("================= 우선순위 - 내림차순 =================");
 
-        descendingPriorityQueue.Dequeue(); print("Dequeue");
-        descendingPriorityQueue.Dequeue(); print("Dequeue");
+        descending.Enqueue("첫째", 1);
+        descending.Enqueue("넷째", 4);
+        descending.Enqueue("둘째", 2);
+        descending.Enqueue("셋째", 3);
+        descending.Enqueue("다섯째", 5);
 
-        descendingPriorityQueue.TestDequeue();
-        descendingPriorityQueue.TestDequeue();
-        descendingPriorityQueue.TestDequeue();
-        descendingPriorityQueue.TestDequeue();
-        descendingPriorityQueue.TestDequeue();
+        descending.Dequeue(); print("Dequeue");
+        descending.Dequeue(); print("Dequeue");
+
+        descending.TestDequeue();
+        descending.TestDequeue();
+        descending.TestDequeue();
+        descending.TestDequeue();
+        descending.TestDequeue();
     }
     #endregion
 
     #region 정렬 테스트
-    int[] arr = new int[] { 1, 9, 2, 4, 5, 7, 6, 8, 0 };
+    //SortTest(new MyRadixSort()); // MyQuickSort MyMergeSort MyRadixSort
+    //SortTest(new MyRadixSort(), SortOrderType.Ascending);
+    int[] arr = new int[] { 1, 459, 20, 40, 5, 75, 6, 18, 0 };
     ISort mySort;
+
 
     void SortTest(ISort sort) // 정렬 테스트 코드에 전략 패턴 적용
     {
